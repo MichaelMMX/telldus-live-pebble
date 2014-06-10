@@ -1,7 +1,7 @@
 function httpPost(url, params, cb) {
 	var p = '';
 	for (var param in params) {
-		if (p != '') {
+		if (p !== '') {
 			p += "&";
 		}
 		p += param + "=" + params[param];
@@ -17,7 +17,7 @@ function httpPost(url, params, cb) {
 		if(req.readyState == 4 && req.status == 200) {
 			cb(req.responseText);
 		}
-	}
+	};
 	req.send(p);
 }
 function parseQuery(query) {
@@ -42,7 +42,7 @@ var pebbleSendQueue = {
 		this._doSend(msg);
 	},
 	_sendDone: function(e) {
-		if (this.queue.length == 0) {
+		if (this.queue.length === 0) {
 			this.queueFull = false;
 			return;
 		}
@@ -55,7 +55,7 @@ var pebbleSendQueue = {
 	},
 	_doSend: function(msg) {
 		this.inQueue = msg;
-		Pebble.sendAppMessage(msg, function(e) { pebbleSendQueue._sendDone(e) }, function(e) { pebbleSendQueue._sendFailed(e) });
+		Pebble.sendAppMessage(msg, function(e) { pebbleSendQueue._sendDone(e); }, function(e) { pebbleSendQueue._sendFailed(e); });
 	}
 };
 
@@ -88,9 +88,9 @@ var dispatcher = {
 	token: '',
 	tokenSecret: '',
 	init: function() {
-		this.token = window.localStorage.getItem('token');
-		this.tokenSecret = window.localStorage.getItem('tokenSecret');
-		if (this.token == '' || this.token == null) {
+		this.token = localStorage.getItem('token');
+		this.tokenSecret = localStorage.getItem('tokenSecret');
+		if (this.token === '' || this.token === null) {
 			this.authenticate();
 		} else {
 			getDevices();
@@ -124,8 +124,8 @@ var dispatcher = {
 			if ('oauth_token' in params && 'oauth_token_secret' in params) {
 				dispatcher.token = params['oauth_token'];
 				dispatcher.tokenSecret = params['oauth_token_secret'];
-				window.localStorage.setItem('token', params['oauth_token']);
-				window.localStorage.setItem('tokenSecret', params['oauth_token_secret']);
+				localStorage.setItem('token', params['oauth_token']);
+				localStorage.setItem('tokenSecret', params['oauth_token_secret']);
 				pebbleSendQueue.send({ "module": "auth", "action": "done" });
 				Pebble.showSimpleNotificationOnPebble("Telldus Live!", "Pebble was successfully paired with your Telldus Live! account");
 				cb();
