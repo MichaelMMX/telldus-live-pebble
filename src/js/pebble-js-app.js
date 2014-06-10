@@ -101,7 +101,7 @@ var dispatcher = {
 		this.tokenSecret = '';
 		pebbleSendQueue.send({ "module": "auth", "action": "clear" });
 		var authorizeUrl = this.authorizeUrl;
-		this._doOAuth(this.requestTokenUrl, { oauth_callback: 'pebblejs:///close#' }, function(query) {
+		this._doOAuth(this.requestTokenUrl, { oauth_callback: 'pebblejs://close#' }, function(query) {
 			var params = parseQuery(query);
 			if ('oauth_token' in params && 'oauth_token_secret' in params) {
 				dispatcher.token = params['oauth_token'];
@@ -167,7 +167,7 @@ var dispatcher = {
 };
 
 Pebble.addEventListener("ready", function(e) {
-	console.log("Reay, with callback");
+	console.log("Ready, with callback");
 	dispatcher.init();
 });
 
