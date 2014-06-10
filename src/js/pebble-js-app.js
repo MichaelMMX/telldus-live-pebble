@@ -108,7 +108,9 @@ var dispatcher = {
 				dispatcher.tokenSecret = params['oauth_token_secret'];
 				var url = authorizeUrl + '?oauth_token=' + params['oauth_token'];
 				pebbleSendQueue.send({ "module": "auth", "action": "request" });
+				Pebble.addEventListener("showConfiguration", function(e) {
 				Pebble.openURL(url);
+				});
 				return;
 			}
 			Pebble.showSimpleNotificationOnPebble("Error", "An error occured while trying to authorize Pebble with your Telldus Live! account");

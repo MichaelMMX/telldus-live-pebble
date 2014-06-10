@@ -1,21 +1,23 @@
 {
-	"uuid": "cfb411ab-18ab-47a1-a4cc-add249269c61",
-	"shortName": "Telldus Live!",
-	"longName": "Telldus Live!",
-	"companyName": "Telldus Technologies AB",
-	"versionCode": 1,
-	"versionLabel": "1.0.0",
-	"watchapp": {
-		"watchface": false
-	},
-	"appKeys": {
-		"module": 0,
-		"action": 1,
-		"name": 2,
-		"id": 3
-	},
-	"resources": {
-		"media": []
-	},
-	"capabilities": [ "configurable" ]
+    "versionCode": 1,
+    "uuid": "cfb411ab-18ab-47a1-a4cc-add249269c61",
+    "capabilities": [
+        "configurable"
+    ],
+    "appKeys": {
+        "action": 1,
+        "name": 2,
+        "module": 0,
+        "id": 3
+    },
+    "shortName": "Telldus Live!",
+    "companyName": "Telldus Technologies AB",
+    "resources": {
+        "media": []
+    },
+    "versionLabel": "1.0.0",
+    "watchapp": {
+        "watchface": false
+    },
+    "longName": "Telldus Live!"
 }
